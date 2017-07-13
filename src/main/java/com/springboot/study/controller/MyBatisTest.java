@@ -51,7 +51,7 @@ public class MyBatisTest {
         user.setAge(88);
         userMapper.update(user);
 //
-//        userMapper.delete("zzz");
+        userMapper.delete("zzz");
 
 
     }
