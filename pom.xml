@@ -85,6 +85,19 @@
             <version>4.5.2</version>
         </dependency>
 
+		<!-- HealthIndicator -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+			<version>1.5.4.RELEASE</version>
+		</dependency>
+
+		<!-- 通过SSH访问springboot项目 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-remote-shell</artifactId>
+			<version>1.0.0.RELEASE</version>
+		</dependency>
 
     </dependencies>
 
