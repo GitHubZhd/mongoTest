@@ -3,13 +3,20 @@ package com.springboot.study.test;
 import com.google.gson.Gson;
 import com.mongodb.*;
 import com.mongodb.client.*;
+import com.mongodb.client.gridfs.GridFSBucket;
+import com.mongodb.client.gridfs.GridFSBuckets;
+import com.mongodb.client.gridfs.model.GridFSUploadOptions;
 import com.mongodb.client.model.*;
 import com.mongodb.client.result.DeleteResult;
 import com.mongodb.client.result.UpdateResult;
 import com.springboot.study.pojo.User;
 import com.springboot.study.util.JsonConvert;
 import org.bson.Document;
+import org.bson.types.ObjectId;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -30,7 +37,8 @@ public class MongoDBTest {
 
     public static void main(String[] args) {
 
-        operate();
+//        operate();
+        other();
         if(1==1){
             return;
         }
@@ -500,4 +508,33 @@ public class MongoDBTest {
 
      verbose:  # 是否产生更加详细的服务器日志，默认true
      */
+
+    /**
+     * uploadFromStream
+     */
+    public static void other(){
+
+        MongoClient mongoClient = new MongoClient("localhost", 27017);
+        MongoDatabase db = mongoClient.getDatabase("MongoTest");//databaseName
+
+//        MongoCollection<Document> mc=db.getCollection("Collection_Two");//collectionName
+        GridFSBucket gridFSBucket = GridFSBuckets.create(db, "files");
+
+        try {
+
+            // Get the input stream
+            InputStream streamToUploadFrom = new FileInputStream(new File("C:\\Users\\ps\\Desktop\\script\\sbtp_49_bcw\\images\\logo.png"));
+
+            // Create some custom options
+            GridFSUploadOptions gridFSUploadOptions = new GridFSUploadOptions()
+                    .chunkSizeBytes(1024)
+                    .metadata(new Document("type", "presentation"));
+
+            ObjectId fileId = gridFSBucket.uploadFromStream("mongodb-tutorial", streamToUploadFrom, gridFSUploadOptions);
+            System.out.println(fileId);
+
+        }catch (Exception e){
+
+        }
+    }
 }
