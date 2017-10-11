@@ -238,6 +238,9 @@ public class MongoDBTest {
             User uu= new Gson().fromJson(document1.toJson(), User.class);
             System.out.println(uu.toString());
 
+            // 关闭数据库连接
+            mongoClient.close();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
