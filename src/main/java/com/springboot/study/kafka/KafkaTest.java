@@ -6,11 +6,12 @@ import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.PartitionInfo;
-import org.apache.kafka.common.internals.Topic;
 import org.junit.Test;
-import org.springframework.kafka.annotation.KafkaListener;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Properties;
 
 /**
  * Created by ps on 2017/11/24.
@@ -73,18 +74,5 @@ public class KafkaTest {
             System.out.printf("offset = %d, key = %s, value = %s", record.offset(), record.key(), record.value());
 
 
-    }
-
-    @KafkaListener(topics = {"jop-kafka"})
-    public void consumerV(){
-
-//        public void processMessage(ConsumerRecord record) {
-//            System.out.println(record.toString());
-//            Optional<?> kafkaMessage = Optional.ofNullable(record.value());
-//            if (kafkaMessage.isPresent()) {
-//                Object message = kafkaMessage.get();
-//                System.out.println("this is the testTopic send message:" + message);
-//            }
-//        }
     }
 }
