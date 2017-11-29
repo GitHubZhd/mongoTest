@@ -62,7 +62,7 @@ public class MyBatisConfiguration {
 //        return pageHelper;
 //    }
 
-    @Bean(name = "dataSource")
+    //@Bean(name = "dataSource")
     public DriverManagerDataSource dataSource(){
         DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();
         driverManagerDataSource.setDriverClassName(driverClassName);
